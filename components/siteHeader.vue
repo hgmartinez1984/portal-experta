@@ -8,15 +8,13 @@
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-item-action>
             <v-list-item-content>
-              <v-list-item-title v-text="item.title.toUpperCase()" />
+              <v-list-item-title v-text="item.title" />
             </v-list-item-content>
           </v-list-item>
           <v-list-group v-else :prepend-icon="item.icon" no-action>
             <template v-slot:activator>
               <v-list-item-content>
-                <v-list-item-title
-                  v-text="item.title.toUpperCase()"
-                ></v-list-item-title>
+                <v-list-item-title v-text="item.title"></v-list-item-title>
               </v-list-item-content>
             </template>
             <v-list-item
@@ -35,7 +33,7 @@
     <v-app-bar fixed app hide-on-scroll height="64" elevate-on-scroll>
       <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true" />
       <nuxt-link to="/" class="d-flex">
-        <Logo />
+        <img :src="`log-exp.jpg`" alt="LogoExperta" />
       </nuxt-link>
       <v-spacer />
 
@@ -83,9 +81,9 @@
           >{{ name.title }}</v-btn
         > </template
       ><v-spacer />
-      <v-btn icon href="https://github.com/staticdesigner/modevue">
+      <!--<v-btn icon href="https://github.com/staticdesigner/modevue">
         <v-icon>mdi-github</v-icon>
-      </v-btn>
+      </v-btn>-->
       <v-btn icon @click="changeThemeColor">
         <v-icon>{{
           $vuetify.theme.dark ? 'mdi-white-balance-sunny' : 'mdi-weather-night'
@@ -104,67 +102,37 @@ export default {
       items: [
         {
           icon: 'mdi-folder-home-outline',
-          title: 'Home',
+          title: 'Nosotros',
           to: '/',
         },
         {
           icon: 'mdi-account',
-          title: 'About',
+          title: 'Lineas de Negocio',
           to: '/about',
         },
         {
           icon: 'mdi-tools',
-          title: 'Services',
+          title: 'Asegurate en Línea',
           to: '/services',
-          submenu: [
-            {
-              title: 'Services Page',
-              to: '/services',
-            },
-            {
-              title: 'Static Websites',
-              to: '/#',
-            },
-            {
-              title: 'Mobile Applications',
-              to: '/#',
-            },
-            {
-              title: 'Corporate websites',
-              to: '/#',
-            },
-            {
-              title: 'Editorial Sites',
-              to: '/#',
-            },
-            {
-              title: 'Ecommerce and Store',
-              to: '/#',
-            },
-            {
-              title: 'Block Chain Devemopment',
-              to: '/#',
-            },
-          ],
         },
         {
           icon: 'mdi-cash-usd',
-          title: 'Pricing',
+          title: 'Operaciones',
           to: '/pricing',
         },
         {
           icon: 'mdi-folder-image',
-          title: 'Gallery',
+          title: 'Alianzas Comerciales',
           to: '/gallery',
         },
         {
           icon: 'mdi-blogger',
-          title: 'Blog',
+          title: 'Campañas Digitales',
           to: '/blog',
         },
         {
           icon: 'mdi-contacts',
-          title: 'Contact',
+          title: 'Desarrollo Humano',
           to: '/contact',
         },
       ],
