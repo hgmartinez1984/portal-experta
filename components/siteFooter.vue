@@ -46,7 +46,7 @@ export default {
   data() {
     return {
       menu: [
-        { text: 'Support', link: '#' },
+        { text: 'Soporte', link: '#' },
         { text: 'Contact Us', link: '#' },
         { text: 'Disclaimer', link: '#' },
         { text: 'Covid-19 Operation', link: '#' },

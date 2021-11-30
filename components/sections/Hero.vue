@@ -1,7 +1,7 @@
 <template>
   <section id="hero">
     <v-carousel
-      height="calc(100vh - 64px)"
+      height="800"
       dark
       cycle
       show-arrows-on-hover
@@ -12,10 +12,9 @@
         v-for="(carousel, carindex) in carouselsData"
         :key="carindex"
         :src="carousel.src"
-        class="gradient-fill"
       >
         <v-container fill-height>
-          <div style="max-width: 600px">
+          <div style="max-width: 100%" class="text-center">
             <div class="text-md-h2 mb-3 text-sm-h3 text-h5 font-weight-black">
               {{ carousel.heading }}
             </div>

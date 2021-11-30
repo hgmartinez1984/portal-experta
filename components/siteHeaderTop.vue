@@ -31,58 +31,60 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar app hide-on-scroll height="60" elevate-on-scroll color="white">
-      <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true" />
-      <nuxt-link to="/" class="d-flex">
-        <img :src="`log-exp.jpg`" alt="LogoExperta" />
-      </nuxt-link>
-      <v-spacer />
+    <v-toolbar app hide-on-scroll height="160" elevate-on-scroll color="white">
+      <v-toolbar-title>
+        <v-app-bar-nav-icon class="hidden-md-and-up" @click="drawer = true" />
+        <nuxt-link to="/" class="d-flex">
+          <img :src="`log-exp.jpg`" alt="LogoExperta" />
+        </nuxt-link>
+        <v-spacer />
 
-      <template v-for="(name, menuitem) in items">
-        <template v-if="name.submenu">
-          <v-menu
+        <template v-for="(name, menuitem) in items">
+          <template v-if="name.submenu">
+            <v-menu
+              :key="menuitem"
+              open-on-hover
+              offset-y
+              transition="slide-y-transition"
+              bottom
+            >
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn
+                  plain
+                  class="py-8 submenubtn hidden-sm-and-down"
+                  :ripple="false"
+                  v-bind="attrs"
+                  v-on="on"
+                >
+                  {{ name.title }}
+                  <v-icon right small class="mx-0"> mdi-chevron-down </v-icon>
+                </v-btn>
+              </template>
+              <v-list dense>
+                <v-list-item
+                  v-for="(item, index) in name.submenu"
+                  :key="index"
+                  link
+                  :to="item.to"
+                >
+                  <v-list-item-title>{{ item.title }}</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </template>
+          <v-btn
+            v-else
             :key="menuitem"
-            open-on-hover
-            offset-y
-            transition="slide-y-transition"
-            bottom
-          >
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                plain
-                class="py-8 submenubtn hidden-sm-and-down"
-                :ripple="false"
-                v-bind="attrs"
-                v-on="on"
-              >
-                {{ name.title }}
-                <v-icon right small class="mx-0"> mdi-chevron-down </v-icon>
-              </v-btn>
-            </template>
-            <v-list dense>
-              <v-list-item
-                v-for="(item, index) in name.submenu"
-                :key="index"
-                link
-                :to="item.to"
-              >
-                <v-list-item-title>{{ item.title }}</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
-        </template>
-        <v-btn
-          v-else
-          :key="menuitem"
-          depressed
-          tile
-          plain
-          class="py-8 hidden-sm-and-down no-text-transform"
-          :to="name.to"
-          >{{ name.title }}</v-btn
-        > </template
-      ><v-spacer />
-    </v-app-bar>
+            depressed
+            tile
+            plain
+            class="py-8 hidden-sm-and-down no-text-transform"
+            :to="name.to"
+            >{{ name.title }}</v-btn
+          > </template
+        ><v-spacer />
+      </v-toolbar-title>
+    </v-toolbar>
   </div>
 </template>
 
